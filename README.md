@@ -60,7 +60,7 @@ En este proyecto, utilizamos un DataFrame de Pandas como una base de datos vecto
 
  ## Imagenes de uso
 
- ![Crear Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/img/CrearEmbeddings.png)
- ![Buscar Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/img/BuscarEmbeddingsSimilares.png)
- ![Actualizar Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/img/ActualizarEmbedding.png)
- ![Eliminar Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/img/EliminarEmbedding.png)
+ ![Crear Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/CrearEmbeddings.png)
+ ![Buscar Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/BuscarEmbeddingsSimilares.png)
+ ![Actualizar Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/ActualizarEmbedding.png)
+ ![Eliminar Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/EliminarEmbedding.png)
