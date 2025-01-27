@@ -40,9 +40,9 @@ Esta clase encapsula las operaciones CRUD sobre los embeddings:
 
 Inicializa la instancia de la clase, configurando el cliente Qdrant, el modelo de embeddings y verificando si la colección existe.
 
-
-def __init__(self):
-
+```bash
+self__init__(self):
+```
 
 self.model: Carga el modelo de sentence-transformers.
 
@@ -56,7 +56,9 @@ self._initialize_collection(): Llama a la función para crear/verificar la colec
 
 Crea la colección en QDrant si no existe.
 
+```bash
 def _initialize_collection(self):
+```
 
 - Verificacion: Si la coleccion existe, la utiliza, de lo contrario la crea.
 
@@ -67,7 +69,9 @@ def _initialize_collection(self):
 
 Genera un identificador unico para cada embedding.
 
+```bash
 def id_generation(self)
+```
 
 - Retorna un numero aleatorio de 4 digitos entre 1000 y 9999
 
@@ -76,7 +80,9 @@ def id_generation(self)
 
 Crea un nuevo embedding a partir de un texto proporcionado.
 
+```bash
 def create(self, text):
+```
 
 - Entrada: text (cadena de texto)
 
@@ -92,7 +98,9 @@ def create(self, text):
 
 Recupera todos los embeddings almacenados en la base de datos.
 
+```bash
 def read(self):
+```
 
 - Salida: Lista de embeddings con su ID y texto asociado.
 
@@ -105,7 +113,9 @@ def read(self):
 
 Busca embeddings similares a un texto proporcionado.
 
+```bash
 def read_similarity(self, text_query, top_k=5):
+```
 
 - Entrada:
  1. text_query: El texto a buscar.
@@ -118,7 +128,9 @@ def read_similarity(self, text_query, top_k=5):
 
 Actualiza un embedding existente con un texto.
 
+```bash
 def update(self, id, new_text):
+```
 
 - Entrada:
  1. id: ID del embedding a actualizar.
@@ -133,7 +145,9 @@ def update(self, id, new_text):
 
 Elimina un embedding por su ID.
 
+```bash
 def delete(self, id):
+```
 
 - Entrada:
  1. id: ID del embedding a actualizar.
@@ -170,7 +184,15 @@ En este proyecto, utilizamos un DataFrame de Pandas como una base de datos vecto
 
  ## Imagenes de uso - Notebook
 
- ![Crear Embedding]()
- ![Buscar Embedding]()
- ![Actualizar Embedding]()
- ![Eliminar Embedding]()
+ ![Crear Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/crearEmbedding.png)
+ ![Buscar Embeddings](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/leerEmbeddings.png)
+ ![Buscar Embedding Similar](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/BuscarEmbeddingsSimilares.png)
+ ![Actualizar Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/ActualizarEmbedding.png)
+ ![Eliminar Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/EliminarEmbedding.png)
+
+ ## Imagenes de uso - FrontEnd
+ ![Crear Embedding en FrontEnd](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/crearEmbeddingFrontend.png)
+ ![Buscar Embeddings en FrontEnd](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/leerEmbeddingsFrontend.png)
+ ![Buscar Embedding Similar en FrontEnd](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/buscarEmbeddingsSimilaresFrontend.png)
+ ![Actualizar Embedding en FrontEnd](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/ActualizarEmbeddingFrontend.png)
+ ![Eliminar Embedding en FrontEnd](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/eliminarEmbeddingFrontend.png)
