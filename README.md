@@ -2,24 +2,33 @@
 
 ### Introducción
 
-Este repositorio contiene un Jupyter Notebook que implementa un sistema CRUD (Create, Read, Update, Delete) para trabajar con embeddings de texto. Utilizando la librería Sentence Transformers para generar embeddings y Pandas para almacenar y manipular los datos, este proyecto proporciona una base sólida para realizar tareas de búsqueda semántica y análisis de texto.
+Este repositorio contiene un Jupyter Notebook que implementa un sistema CRUD (Create, Read, Update, Delete) para trabajar con embeddings de texto. Utilizando la librería Sentence Transformers para generar embeddings, este proyecto proporciona una base sólida para realizar tareas de búsqueda semántica y análisis de texto.
 
 ### Requisitos
 
 * **Python:** Versión 3.6 o superior.
 * **Librerías:**
-  * `pandas`
-  * `numpy`
-  * `sentence-transformers`
+  * `Qdrant`: Una base de datos vectorial para almacenamiento y búsqueda de embeddings.
+  * `Streamlit`: Una interfaz web interactiva para gestionar los embeddings.
+  * `sentence-transformers`: Un modelo de machine learning para generar embeddings a partir de texto.
 
 Para instalar las dependencias, ejecuta el siguiente comando en tu terminal:
 
 ```bash
-pip install pandas sentence-transformers numpy
+pip install -r requirements.txt
 ```
 
 ### Estructura del proyecto
 * **notebook.ipynb**: Contiene el código principal del proyecto, incluyendo la definición de la clase CRUD y ejemplos de uso.
+
+### Uso del Proyecto
+
+Guarda el archivo de la aplicación con el nombre app.py y ejecútala con:
+
+
+```bash
+streamlit run app.py
+```
 
 ### Explicación de las funcionalidades
 
@@ -27,10 +36,111 @@ pip install pandas sentence-transformers numpy
 
 Esta clase encapsula las operaciones CRUD sobre los embeddings:
 
-* **create(text)**: Crea un nuevo embedding para el texto dado, lo agrega al DataFrame y lo guarda.
-* **read(query)**: Busca embeddings similares a una consulta dada. Calcula la similitud coseno entre la consulta y cada embedding almacenado y devuelve los resultados ordenados por similitud.
-* **update(index, new_text)**: Actualiza el texto y el embedding de un registro específico.
-* **delete(index)**: Elimina un registro del DataFrame.
+#### 1. Constructor __init__()
+
+Inicializa la instancia de la clase, configurando el cliente Qdrant, el modelo de embeddings y verificando si la colección existe.
+
+
+def __init__(self):
+
+
+self.model: Carga el modelo de sentence-transformers.
+
+self.client: Inicializa la conexión con Qdrant.
+
+self.index_name: Define el nombre de la colección en la base de datos.
+
+self._initialize_collection(): Llama a la función para crear/verificar la colección.
+
+#### 2. Metodo _initialize_collection()
+
+Crea la colección en QDrant si no existe.
+
+def _initialize_collection(self):
+
+- Verificacion: Si la coleccion existe, la utiliza, de lo contrario la crea.
+
+- Parametros del vector: Define la dimension y la metrica de distancia(coseno).
+
+
+#### 3. Metodo id_generation()
+
+Genera un identificador unico para cada embedding.
+
+def id_generation(self)
+
+- Retorna un numero aleatorio de 4 digitos entre 1000 y 9999
+
+
+#### 4. Metodo create(text)
+
+Crea un nuevo embedding a partir de un texto proporcionado.
+
+def create(self, text):
+
+- Entrada: text (cadena de texto)
+
+- Salida: Retorna el ID generado y el embedding creado.
+
+- Proceso:
+ 1. Convierte el texto en un embedding.
+ 2. Genera un ID unico.
+ 3. Almacena en la base de datos.
+
+
+#### 5. Metodo read()
+
+Recupera todos los embeddings almacenados en la base de datos.
+
+def read(self):
+
+- Salida: Lista de embeddings con su ID y texto asociado.
+
+- Proceso:
+ 1. Realiza una consulta de lectura usando "scroll".
+ 2. Devuelve los resultados en forma de lista.
+
+
+#### 6. Metodo read_similarity(text_query, top_k=5)
+
+Busca embeddings similares a un texto proporcionado.
+
+def read_similarity(self, text_query, top_k=5):
+
+- Entrada:
+ 1. text_query: El texto a buscar.
+ 2. top_k: Numero de resultados mas similares (por defecto 5).
+
+- Salida: Lista con los IDs, textos y puntajes de similitud.
+
+
+#### Metodo update(id, new_text)
+
+Actualiza un embedding existente con un texto.
+
+def update(self, id, new_text):
+
+- Entrada:
+ 1. id: ID del embedding a actualizar.
+ 2. new_text: Nuevo texto a almacenar.
+
+- Proceso:
+ 1. Genera un nuevo embedding a partir del nuevo texto.
+ 2. Sobreescribe el registro con el nuevo valor.
+
+
+#### 8. Metodo delete(id)
+
+Elimina un embedding por su ID.
+
+def delete(self, id):
+
+- Entrada:
+ 1. id: ID del embedding a actualizar.
+ 2. Salida: Confirmacion de eliminación.
+
+- Salida: Confirmacion de eliminacion.
+
 
 ### Base de datos vectorial
 
@@ -58,9 +168,9 @@ En este proyecto, utilizamos un DataFrame de Pandas como una base de datos vecto
 
  ---
 
- ## Imagenes de uso
+ ## Imagenes de uso - Notebook
 
- ![Crear Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/CrearEmbeddings.png)
- ![Buscar Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/BuscarEmbeddingsSimilares.png)
- ![Actualizar Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/ActualizarEmbedding.png)
- ![Eliminar Embedding](https://github.com/JuanManuelGilQuiroga/embeddingsCrudNotebook/blob/main/img/EliminarEmbedding.png)
+ ![Crear Embedding]()
+ ![Buscar Embedding]()
+ ![Actualizar Embedding]()
+ ![Eliminar Embedding]()
